@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <!-- The action keeps you on /quote in this case, but can send u elsewhere -->
+
+    <!-- Transaction Table -->
+    <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Time Transacted</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for trade in history %}
+            <tr>
+                <td> {{ trade["symbol"] }} </td>
+                <td> {{ trade["name"] }} </td>
+                <td> {{ trade["shares"] }} </td>
+                <td> {{ usd_function(trade["price"]) }} </td>
+                <td> {{ trade["time"] }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+
+
+{% endblock %}

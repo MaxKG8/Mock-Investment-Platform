@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <!-- The action keeps you on /quote in this case, but can send u elsewhere -->
+
+
+    <div id="quoted" class="mb-3" style="font-size: 20px; color: #0d6efd; font-weight: bold;">
+        <strong>Net Worth: {{ usd_function(net_worth) }}</strong>
+        <br>
+        <strong>Cash Balance: {{ usd_function(cash) }}</strong>
+    </div>
+
+    <!-- Portfolio Table -->
+    <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for share in shares %}
+            <tr>
+                <td> {{ share["symbol"] }} </td>
+                <td> {{ share["name"] }} </td>
+                <td> {{ share["shareSum"] }} </td>
+                <td> {{ usd_function(share["price"]) }} </td>
+                <td> {{ usd_function(share["shareSum"] * share["price"]) }} </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+
+        <tfooter>
+            <tr>
+                <td>Cash Balance</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ usd_function(cash) }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ usd_function(net_worth) }}</td>
+            </tr>
+        </tfooter>
+      </table>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <!-- The action keeps you on /quote in this case, but can send u elsewhere -->
+    <form action="/buy" method="post">
+
+        <div class="mb-3" style="display: inline-block">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="stock-buy" name="symbol" placeholder="Ticker Symbol" type="text" style="text-align: center">
+        </div>
+        <div class="mb-3"style="display: inline-block">
+            <input autocomplete="off" autofocus class="form-control mx-auto" id="quant-buy" name="shares" placeholder="Quantity" type="text" style="width: 90px; text-align: center;">
+        </div>
+
+        <br>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+{% endblock %}

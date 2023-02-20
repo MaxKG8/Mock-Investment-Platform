@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <!-- The action keeps you on /quote in this case, but can send u elsewhere -->
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Ticker Symbol" type="text">
+        </div>
+
+        <!-- Adds this to quote if valid ticker is inputted -->
+        {% if quote_dict != Null %}
+            <div id="quoted" class="mb-3" style="font-size: 20px; color: #0d6efd; font-weight: bold;">
+                <strong id="symbol">{{ quote_dict.symbol }}</strong>
+                <br>
+                <strong id="name">{{ quote_dict.name }}</strong>
+                <br>
+                <strong id="price">{{ usd_function(quote_dict.price) }}</strong>
+            </div>
+        {% endif %}
+
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+{% endblock %}

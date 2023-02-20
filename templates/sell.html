@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <!-- The action keeps you on /quote in this case, but can send u elsewhere -->
+    <form action="/sell" method="post">
+
+        <div class="mb-3" style="display: inline-block">
+            <select class="form-select mx-auto w-auto" name="symbol">
+                <option disabled selected>Symbol</option>
+                {% for share in shares %}
+                    <option>{{ share['symbol'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto" id="quant-sell" name="shares" placeholder="Quantity" type="text" style="width: 90px; text-align: center;">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
