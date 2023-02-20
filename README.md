@@ -1,1 +1,1 @@
-# Investment-Platform
+# Mock Investment Platform
